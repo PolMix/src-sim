@@ -11,7 +11,7 @@ class CameraPublisher(Node):
     def __init__(self):
         super().__init__('cam_pub_node')
         # Create a publishers
-        self.pub_img = self.create_publisher(CompressedImage, 'camera/image_raw', 10)
+        self.pub_img = self.create_publisher(CompressedImage, 'image_raw', 10)
         
         # Create a timer to publish frames at 60 Hz
         self.timer = self.create_timer(1/60.0, self.publish_image)
@@ -26,6 +26,8 @@ class CameraPublisher(Node):
         self.i_red = 255
         self.i_green = 511
         self.i_blue = 767
+
+        self.get_logger().info("\x1B[32mCamPublisher has successfully started!\033[0m\t\t")
         
 
     def publish_image(self):
@@ -45,7 +47,7 @@ class CameraPublisher(Node):
         msg.format = "jpeg"
         msg.data = np.array(cv2.imencode('.jpg', image_np)[1]).tostring()
         # Publish image
-        self.image_pub.publish(msg)
+        self.pub_img.publish(msg)
         
         self.i += 1
         if self.i == self.i_blue:
@@ -53,7 +55,6 @@ class CameraPublisher(Node):
 
     def destroy_node(self):
         # Release the camera when shutting down
-        self.cap.release()
         super().destroy_node()
 
 def main(args=None):
