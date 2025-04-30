@@ -54,6 +54,8 @@ class ArduinoReader(Node):
         # Insert constant fields of the ir obstacle detector msg
         self.msg_tilt = BinaryDetectionStamped()
         self.msg_tilt.header.frame_id = "tilt_link"
+
+        self.dumm_range = [i for i in range(0, 100)]
         
     def start_receive_threading(self):
         try:
@@ -75,18 +77,18 @@ class ArduinoReader(Node):
         while True:
             time.sleep(0.05)
             
-            if i == 0:
-                self.val['SND1'] = 1
-            elif i == 1:
+            self.val['SND1'] = self.dumm_range[i]/10.0
+            
+            if (i % 2) == 0:
                 self.val['IROB'] = 1
-            elif i == 2:
+            elif (i % 2) == 0:
                 self.val['IRM1'] = 1
-            elif i == 3:
+            elif (i % 2) == 0:
                 self.val['TLT1'] = 1
             
             i += 1
             
-            if i == 3:
+            if i == 99:
                 i = 0
             
 
