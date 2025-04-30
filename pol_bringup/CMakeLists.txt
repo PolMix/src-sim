@@ -19,23 +19,9 @@ find_package(geometry_msgs       REQUIRED)
 find_package(nav_msgs            REQUIRED)
 find_package(pol_msgs            REQUIRED)
 
-
-#---------- Directories, launch and parameter files ----------
-# include dir
-install(
-  DIRECTORY include/
-  DESTINATION include
-)
-
 #---- Launch files ----
 install(
   DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME}
-)
-
-#---- Parameter files ----
-install(
-  DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 
