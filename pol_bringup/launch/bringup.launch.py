@@ -16,10 +16,10 @@ def generate_launch_description():
     ),
     
     Node(
-      package    = 'pol_bringup'              ,
-      executable = 'arduino_reader_node.py.py',
-      name       = 'arduino_reader_node'      ,
-      output     = 'screen'                   ,
+      package    = 'pol_bringup'           ,
+      executable = 'arduino_reader_node.py',
+      name       = 'arduino_reader_node'   ,
+      output     = 'screen'                ,
     ),
     
     Node(
