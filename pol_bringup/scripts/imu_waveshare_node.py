@@ -17,7 +17,8 @@ class ImuWaveshare(Node):
         super().__init__('imu_waveshare_node')
         
         self.__bus_state = 0
-        
+
+        self.time_now = None
         
         #---------- IMU measurement storage ----------
         self.val = {
@@ -78,7 +79,8 @@ class ImuWaveshare(Node):
 
     
     def receive_data(self):
-        
+
+        self.time_now = self.get_clock().now().to_msg()
         dummy_values = [i / 10.0 for i in range(0, 100)]
         i = 0
         while True:
