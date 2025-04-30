@@ -91,7 +91,7 @@ class ArduinoReader(Node):
             
 
     def publish_data(self):
-        time_now = self.get_clock().now()
+        time_now = self.get_clock().now().to_msg()
         
         # Sound range
         self.msg_sound.header.stamp = time_now
