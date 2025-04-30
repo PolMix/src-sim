@@ -85,22 +85,22 @@ class ImuWaveshare(Node):
         i = 0
         while True:
             time.sleep(0.05)
-            self.val['a'][0] = float(dummy_values)
-            self.val['a'][1] = float(dummy_values)
-            self.val['a'][2] = float(dummy_values)
+            self.val['a'][0] = float(dummy_values[i])
+            self.val['a'][1] = float(dummy_values[i])
+            self.val['a'][2] = float(dummy_values[i])
             
-            self.val['g'][0] = float(dummy_values)
-            self.val['g'][1] = float(dummy_values)
-            self.val['g'][2] = float(dummy_values)
+            self.val['g'][0] = float(dummy_values[i])
+            self.val['g'][1] = float(dummy_values[i])
+            self.val['g'][2] = float(dummy_values[i])
             
-            self.val['q'][0] = float(dummy_values)
-            self.val['q'][1] = float(dummy_values)
-            self.val['q'][2] = float(dummy_values)
-            self.val['q'][3] = float(dummy_values)
+            self.val['q'][0] = float(dummy_values[i]/10.0)
+            self.val['q'][1] = float(dummy_values[i]/10.0)
+            self.val['q'][2] = float(dummy_values[i]/10.0)
+            self.val['q'][3] = float(dummy_values[i]/10.0)
             
-            self.val['m'][0] = float(dummy_values)
-            self.val['m'][1] = float(dummy_values)
-            self.val['m'][2] = float(dummy_values)
+            self.val['m'][0] = float(dummy_values[i])
+            self.val['m'][1] = float(dummy_values[i])
+            self.val['m'][2] = float(dummy_values[i])
             
             i += 1
             
