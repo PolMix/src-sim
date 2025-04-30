@@ -153,6 +153,7 @@ def main(args=None):
     # Init node
     node = ImuWaveshare()
     node_name = "ImuWaveshare"
+    node.start_receive_threading()
     
     try:
         rclpy.spin(node)
