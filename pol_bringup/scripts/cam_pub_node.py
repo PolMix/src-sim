@@ -41,7 +41,7 @@ class CameraPublisher(Node):
         image_np[:, :] = pixel_rgb
         
         msg = CompressedImage()
-        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.header.stamp = self.get_clock().now()
         msg.format = "jpeg"
         msg.data = np.array(cv2.imencode('.jpg', image_np)[1]).tostring()
         # Publish image
