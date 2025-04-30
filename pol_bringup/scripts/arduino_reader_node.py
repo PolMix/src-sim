@@ -60,7 +60,7 @@ class ArduinoReader(Node):
             if self.__uart_state == 0:
                 thread_name = "task_serial_receive"
                 task_receive = threading.Thread(target=self.receive_data, name=thread_name)
-                task_receive.setDaemon(True)
+                task_receive.daemon = True
                 task_receive.start()
                 self.get_logger().info("\x1B[32mArduinoReader threading has successfully started!\033[0m\t\t")
                 self.__uart_state = 1
